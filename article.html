@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orangesoft</title>
+</head>
+<link rel="stylesheet" href="style/2025.css">
+<script src="script/2025.js"></script>
+
+<noscript>
+    Orangesoft's blog.
+</noscript>
+
+<body>
+    <div class="container">
+        <h2><a href="./index.html">回到主页</a></h2>
+    </div>
+    <div class="article_box">
+    </div>
+</body>
+
+<script>
+    let articleId = new URLSearchParams(window.location.search).get('id');
+    console.log(articleId);
+    if (articleId === null) {
+        articleId = 0
+    }
+    if (isNaN(articleId) || articleId <= 0) {
+        let article = document.getElementsByClassName('article_box')[0];
+        let article_html = `
+            编号为 ${articleId} 的文章不存在或已删除。
+        `;
+        article.innerHTML += article_html;
+    } else {
+        start_article(articleId);
+    }
+</script>
+
+</html>
